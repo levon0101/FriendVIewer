@@ -55,7 +55,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DesignTimeData\DesignFriendDataProvider.cs" />
+    <Compile Include="DataProvider\FriendDataProvider.cs" />
+    <Compile Include="DataProvider\IFriendDataProvider.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\Observable.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Page Include="Controls\FooterControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\FriendControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NavigationControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -67,8 +85,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\FooterControl.xaml.cs">
+      <DependentUpon>FooterControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FriendControl.xaml.cs">
       <DependentUpon>FriendControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HeaderControl.xaml.cs">
+      <DependentUpon>HeaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NavigationControl.xaml.cs">
+      <DependentUpon>NavigationControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="DesignTimeData\DesignFriend.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -105,6 +132,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="DesignTimeData\Images\levon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataProvider\Images\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

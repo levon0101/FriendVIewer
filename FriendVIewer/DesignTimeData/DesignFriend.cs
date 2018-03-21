@@ -15,20 +15,21 @@ namespace FriendVIewer.DesignTimeData
             FirstName = "Levon";
             LastName = "Mardanyan";
             Email = "levon.ecs@gmail.com";
+            CellPhone = "055979969";
             HomePage = "none";
-            setImageProperty();
+           // setImageProperty();
         }
 
-        private void setImageProperty()
-        {
-            var streemRecourceInfo = Application.GetResourceStream(
-                new Uri("FriendViewer,Component/DesignTimeData/Images/Leovn.jpg", UriKind.Relative));
+        //private void setImageProperty()
+        //{
+        //    var streemRecourceInfo = Application.GetResourceStream(
+        //        new Uri("FriendViewer,Component/DesignTimeData/Images/Leovn.jpg", UriKind.Relative));
 
-            var length = streemRecourceInfo.Stream.Length;
-            byte[] image = new byte[length];
-            streemRecourceInfo.Stream.Read(image, 0, (int)length);
+        //    var length = streemRecourceInfo.Stream.Length;
+        //    byte[] image = new byte[length];
+        //    streemRecourceInfo.Stream.Read(image, 0, (int)length);
 
-            Image = image;
-        }
+        //    Image = image;
+        //}
     }
 }

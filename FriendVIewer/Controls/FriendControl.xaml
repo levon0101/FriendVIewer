@@ -7,37 +7,38 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" 
              Background="#333333">
-    <d:DataContext>
+    <!--<d:DataContext>
         <designData:DesignFriend/>
-    </d:DataContext>
+    </d:DataContext>-->
 
-    <Grid>
+    <Grid Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="{Binding Path = FullName}" FontSize="25" Grid.ColumnSpan="2"/>
+        <TextBlock Text="{Binding Path = FullName}" FontSize="25" Grid.ColumnSpan="2" Margin="0 10"/>
 
         <Label Grid.Row="1" Content="CellPhone" />
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding CellPhone}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding CellPhone}" Margin="5"/>
 
         <Label Grid.Row="2" Content="Email" />
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Email}" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Email}" Margin="5"/>
 
         <Label Grid.Row="3" Content="HomePage"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding HomePage}"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding HomePage}" Margin="5"/>
 
 
-        <Border Grid.Row="4" Grid.Column="1" BorderThickness="2" BorderBrush="White">
-            <Image Source="{Binding Image}"/>
+        <Border Grid.Row="4" Grid.Column="1" BorderThickness="2" BorderBrush="White"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" MinHeight="150" MinWidth="150">
+            <!--<Image Source="{Binding Image}"/>-->
         </Border>
     </Grid>
 </UserControl>

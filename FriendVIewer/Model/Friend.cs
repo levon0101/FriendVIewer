@@ -18,7 +18,7 @@ namespace FriendVIewer.Model
 
         public string HomePage { get; set; }
 
-        public byte[] Image { get; set; }
+       // public byte[] Image { get; set; }
 
         public string FullName
         {
