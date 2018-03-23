@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FriendVIewer.DataProvider;
+using FriendVIewer.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FriendViewer.Extensions;
 
 namespace FriendVIewer
 {
@@ -23,6 +26,26 @@ namespace FriendVIewer
         public MainWindow()
         {
             InitializeComponent();
+
+
+            DataContext = new MainViewModel(new FriendDataProvider());
+        }
+
+        private void FriendControl_MouseEnter(object sender, MouseEventArgs e)
+        {
+            GeneralTransform generalTransform = this.TransformToVisual(navigationGrid);
+
+            Point point = generalTransform.Transform(new Point());
+
+            point.X += navigationTransform.X;
+            point.X -= navigationColoumn.ActualWidth;
+            point.Y = 0; //point.Y += navigationTransform.Y; // havn't Y value always 0
+            navigationTransform.AnimateTo(point);
+        }
+
+        private void Button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            navigationTransform.AnimateTo(new Point());
         }
     }
 }

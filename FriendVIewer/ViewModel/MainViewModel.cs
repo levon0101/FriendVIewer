@@ -11,6 +11,9 @@ namespace FriendVIewer.ViewModel
 {
     public class MainViewModel : Observable
     {
+        private bool _isLoading;
+      
+
         private IFriendDataProvider _dataProvideder;
         private Friend _selectedFriend;
 
@@ -20,19 +23,32 @@ namespace FriendVIewer.ViewModel
         {
             _dataProvideder = dataProvider;
             Friends = new ObservableCollection<Friend>();
+            LoadDataAsync();
         }
 
-        private void LoadData()
+        private async void LoadDataAsync()
         {
-            var friends = _dataProvideder.LoadFriend();
-            foreach (var friend in friends)
+            IsLoading = true;
+            try
             {
-                Friends.Add(friend);
+                // var friends = _dataProvideder.LoadFriend();
+
+                var task = Task.Run(() => _dataProvideder.LoadFriend());
+                IEnumerable<Friend> friends = await task;
+                foreach (var friend in friends)
+                {
+                    Friends.Add(friend);
+                }
             }
+            finally
+            {
+                IsLoading = false;
+            }
+
 
             SelectedFriend = Friends.Count > 0 ? Friends.First() : null;
         }
-        
+
 
         public Friend SelectedFriend
         {
@@ -40,6 +56,16 @@ namespace FriendVIewer.ViewModel
             set
             {
                 _selectedFriend = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set
+            {
+                _isLoading = value;
                 OnPropertyChanged();
             }
         }

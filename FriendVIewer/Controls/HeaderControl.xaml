@@ -7,8 +7,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Background='Black'>
     <Grid>
-        <TextBlock FontSize="30" Margin="10">
+        <TextBlock FontSize="30" Margin="0 0" HorizontalAlignment="Left" RenderTransformOrigin="0.5 0.0">
+            <TextBlock.RenderTransform >
+                <TransformGroup>
+                    <RotateTransform Angle="-5" />
+                    <SkewTransform AngleX="5" AngleY="0"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
             <Bold Foreground="Red">Friend</Bold>Viewer
+
         </TextBlock>
     </Grid>
 </UserControl>
