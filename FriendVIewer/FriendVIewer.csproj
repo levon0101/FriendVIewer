@@ -149,5 +149,9 @@
   <ItemGroup>
     <Resource Include="Images\Icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pinned.bmp" />
+    <Resource Include="Images\unpinned.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

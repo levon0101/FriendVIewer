@@ -24,5 +24,34 @@ namespace FriendVIewer.Controls
         {
             InitializeComponent();
         }
+        public event EventHandler IsPinnedChanged;
+
+        public bool IsPinned
+        {
+            get { return (bool)GetValue(IsPinnedProperty); }
+            set { SetValue(IsPinnedProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsPinned.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsPinnedProperty =
+            DependencyProperty.Register("IsPinned", typeof(bool), typeof(NavigationControl), new PropertyMetadata(true, OnPropertyChanged));
+
+        private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var navigationControl = d as NavigationControl;
+            if (navigationControl != null)
+            {
+                navigationControl.OnIsPinnedChanged(EventArgs.Empty);
+            }
+        }
+
+        protected virtual void OnIsPinnedChanged(EventArgs e)
+        {
+            var handler = IsPinnedChanged;
+            if (handler != null)
+            {
+                handler(this, EventArgs.Empty);
+            }
+        }
     }
 }

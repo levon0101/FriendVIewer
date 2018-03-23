@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FriendVIewer.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="#CCCCCC">
+             d:DesignHeight="450" d:DesignWidth="800" Background="#CCCCCC"
+             x:Name="_root">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -13,8 +14,20 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Navigation" Foreground="Red" FontWeight="Bold" FontSize="15"
-                   Margin="5" HorizontalAlignment="Left">
-        </TextBlock>
+                   Margin="5" HorizontalAlignment="Left"/>
+        <ToggleButton HorizontalAlignment="Right" 
+                      IsChecked="{Binding ElementName=_root,Path=IsPinned,Mode=TwoWay}" >
+            <ToggleButton.Template>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Image Margin="3" x:Name="image" Stretch="None" Source="../Images/unpinned.bmp"/>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="image" Property="Source" Value="../Images/pinned.bmp" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </ToggleButton.Template>
+        </ToggleButton>
 
         <ListView Grid.Row="1"
                   ItemsSource="{Binding Friends}"
