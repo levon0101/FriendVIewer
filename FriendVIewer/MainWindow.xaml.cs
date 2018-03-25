@@ -31,7 +31,7 @@ namespace FriendVIewer
             DataContext = new MainViewModel(new FriendDataProvider());
         }
 
-        private void FriendControl_MouseEnter(object sender, MouseEventArgs e)
+        private void MainArea_MouseEnter(object sender, MouseEventArgs e)
         {
             if (!navigationControl.IsPinned)
             {
